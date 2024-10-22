@@ -1,0 +1,32 @@
+body{
+    background-color : azure;
+}
+.fella {
+    width: 50px;
+  
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.hidden{
+    background-color:lightgray;
+}
+button{
+    
+    width:50px;
+    height:50px;
+}
+.head{
+   border:1px solid black;
+   width: 488px;
+}
+table{
+    border: 1px solid black;
+    
+}
+tr {
+    border: 1px solid black;
+}
+td{
+    
+}
