@@ -8,15 +8,7 @@ let isAlive = true;
 function sweepClick() {
     var lastClicked = event.srcElement.id;
     if (isAlive) {
-        for (let i = 0; i < bombs.length; i++) {
-
-            if (lastClicked == bombs[i]) {
-                
-                const image = document.getElementById("lil-fella");
-                image.src = "sad.png";
-                isAlive = false;
-            }
-        } 
+        var tempFix = false;
         var lastClickedMineCount = 0;
         //console.log(lastClicked.split(""));
        var clickRow = lastClicked.split("")[0];
@@ -30,10 +22,19 @@ function sweepClick() {
             if (Number(letterToNumber(clickRow) + clickCol) + 9 == letterToNumber(bombs[i].split("")[0]) + bombs[i].split("")[1]) lastClickedMineCount++;
             if (Number(letterToNumber(clickRow) + clickCol) + 10 == letterToNumber(bombs[i].split("")[0]) + bombs[i].split("")[1]) lastClickedMineCount++;
             if (Number(letterToNumber(clickRow) + clickCol) + 11 == letterToNumber(bombs[i].split("")[0]) + bombs[i].split("")[1]) lastClickedMineCount++;
+            if (Number(letterToNumber(clickRow) + clickCol) == letterToNumber(bombs[i].split("")[0]) + bombs[i].split("")[1]) {
+                document.getElementById(lastClicked).innerHTML = "bomb";
+                isAlive = false;
+                tempFix = true;
+                const image = document.getElementById("lil-fella");
+                image.src = "sad.png";
+                break;
+            }
         }
-        console.log(lastClickedMineCount);
-
-        document.getElementById(lastClicked).innerHTML = lastClickedMineCount;
+        
+        if (tempFix == false) {
+            document.getElementById(lastClicked).innerHTML = lastClickedMineCount;
+        }
           
         
 
